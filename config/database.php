@@ -1,10 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-$server = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$database = "android_db";
-
+include './config/config.php';
 
 try {
 
