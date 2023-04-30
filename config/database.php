@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-include './config/config.php';
+include '../config/config.php';
 
 try {
 
