@@ -27,7 +27,7 @@ if ($password !== $confirmPassword) {
         $middleName,
         $lastName,
         $email,
-        $password
+        $hashed_password
     ]);
 
     if ($added) {

@@ -3,12 +3,10 @@ require '../config/database.php';
 require '../includes/response.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
+    $id = $_POST['id'];
     // find user with the given email
-    $query = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $query->execute([$email]);
+    $query = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+    $query->execute([$id]);
 
     // if user is found
     if ($query->rowCount() > 0) {
