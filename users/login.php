@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         // if no user is found
-        $response = Response::failed('Your credentials does not match any of our records!' . Response::$STATUS_NOT_FOUND);
+        $response = Response::failed('Your credentials does not match any of our records!', Response::$STATUS_NOT_FOUND);
     }
 
     echo json_encode($response);

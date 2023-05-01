@@ -12,19 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($query->rowCount() > 0) {
         $user = $query->fetch(PDO::FETCH_ASSOC);
         // check if password match
-        if (password_verify($password, $user['password'])) {
-            // delete user
-            $query = $pdo->prepare("DELETE FROM users WHERE id = ?");
-            $is_deleted = $query->execute([$id]);
+        $query = $pdo->prepare("DELETE FROM users WHERE id = ?");
+        $is_deleted = $query->execute([$id]);
 
-            if ($is_deleted) {
-                $response = Response::success('We successfully deleted your account', [$user => 'user']);
-            } else {
-                $response = Response::failed();
-            }
+        if ($is_deleted) {
+            $response = Response::success('We successfully deleted your account');
         } else {
-            $response = Response::failed(message: "Your password is incorrect!", status_code: Response::$STATUS_FORBIDDEN);
+            $response = Response::failed();
         }
+    } else {
+        $response = Response::failed("We cannot find your account!");
     }
 
     echo json_encode($response);
